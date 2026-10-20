@@ -1,0 +1,63 @@
+# 老乡鸡产品溯源系统 · 需求评审原型
+
+版本日期：2026-10-20。纯静态 HTML、CSS、JavaScript 项目，无需 npm 安装或构建。
+
+## 本次包含的最新修改
+
+- 原料正向、逆向报告摘要新增供应商资质链接，弹框内支持筛选、分页及导出，并保留来源环节、原料、收货单关联。
+- 正向、逆向、菜品报告移除牧场出库与农场养殖；左侧移除养殖管理菜单。
+- 三类报告详情表格和关联弹框支持 CSV 导出，导出当前筛选结果的全部分页记录。
+- 原料详情新增原料验收标准 Tab；生产订单增加多值车间、流水线；司机详情增加健康证信息。
+- 消费者报告支持条件圈定、本页多选、跨页多选、全部筛选结果选择及批量关闭；提供影响范围、原因填写和结果清单。
+
+## 上传 GitHub
+
+1. 解压 ZIP，新建一个 GitHub 仓库，例如 `lxj-trace-demo`。
+2. 上传解压后的全部内容到仓库根目录，确保 `index.html`、`assets`、`README.md` 在同一层级。不要只上传 ZIP，也不要多包一层发布包目录。
+3. 提交到 `main` 分支（或实际用于发布的分支）。免费账号可使用公开仓库部署 GitHub Pages。
+4. 在仓库 **Settings → Pages → Build and deployment**，将 **Source** 设置为 **Deploy from a branch**。
+5. 选择 **main** 和 **/(root)**，点击 **Save**。
+6. 等待部署成功后，在 Pages 页面打开生成的地址。一般为 `https://你的用户名.github.io/仓库名/`。
+
+资源均使用相对路径，适用于 GitHub 仓库子目录网址。页面通过 hash 切换路由，刷新详情页无需额外重写规则。
+
+`.nojekyll` 用于跳过 Jekyll 处理。Mac 按 Command + Shift + . 可以显示隐藏文件。
+
+若发布后 404，先确认 `index.html` 位于所选分支根目录，再查看仓库 Actions 内的 Pages 部署结果。
+
+官方说明：https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+
+## 本地打开
+
+直接用浏览器打开 `index.html`；也可以在本目录运行：
+
+```sh
+python3 -m http.server 8000
+```
+
+然后访问 `http://localhost:8000`。
+
+## 演示说明
+
+- 数据与凭证为原型示例，未接入真实业务或消费者服务。
+- 配置、关闭状态等保存在当前浏览器本地存储，不会跨设备或跨域名同步。
+- 重新生成消费者报告不会自动解除已关闭状态。
+- 页面右上角“恢复演示数据”可重置当前浏览器的原型数据；有需要保留的配置时不要使用。
+- 保留原项目的在线图标样式引用，访问该样式地址需要网络连接。
+- 包内不含浏览器个人数据、Git 历史、其他项目或托管凭证。
+
+## 文件结构
+
+```text
+index.html
+assets/
+  app.js
+  app.css
+  schema.js
+  report-schema.js
+.nojekyll
+.gitignore
+README.md
+```
+
+打包前已通过资质弹框、报告环节精简、表格导出、消费者报告批量关闭及既有平铺详情的回归验证。
